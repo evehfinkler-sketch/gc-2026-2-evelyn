@@ -79,11 +79,10 @@ formulario.addEventListener("submit", (evento) => {
   const consultas = carregar();
 
   if (horarioOcupado(consultas, nova)) {
-    mensagem.textContent = "erro";
-    formulario.reset();
+    mensagem.textContent = "Já existe uma consulta marcada para este profissional nesta data e horário.";
     return;
   }
-
+  
   consultas.push(nova);
   salvar(consultas);
   mensagem.textContent = "Consulta agendada.";
