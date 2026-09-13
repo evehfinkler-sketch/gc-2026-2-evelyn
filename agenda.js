@@ -76,6 +76,12 @@ formulario.addEventListener("submit", (evento) => {
     hora: document.getElementById("hora").value,
   };
 
+  const hoje = new Date().toISOString().split("T")[0];
+  if (nova.data < hoje) {
+     mensagem.textContent = "Não é possível agendar em uma data que já passou.";
+     return;
+  }
+
   const consultas = carregar();
 
   if (horarioOcupado(consultas, nova)) {
